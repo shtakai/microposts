@@ -3,14 +3,21 @@
     <%= @user.name %>
 </h1>
 
+
 <div id="profile" class="panel panel-default">
     <div class="panel-heading">
-        Your profile
+        <%= @user.name %>'s profile
+        <% if current_user.id == @user.id %>
+            (
+            <%= link_to 'Edit', edit_user_path(@user) %>
+            )
+        <% end %>
     </div>
     
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">
+                <%= fa_icon "envelope" %>
                 email
             </div>
             <div class="col-md-8">
@@ -20,6 +27,7 @@
         
         <div class="row">
             <div class="col-md-4">
+                <%= fa_icon "user" %>
                 profile
             </div>
             <div class="col-md-8">
@@ -29,6 +37,7 @@
         
         <div class="row">
             <div class="col-md-4">
+                <%= fa_icon "map-marker" %>
                 location
             </div>
             <div class="col-md-8">
@@ -38,6 +47,7 @@
         
         <div class="row">
             <div class="col-md-4">
+                <%= fa_icon "link" %>
                 url
             </div>
             <div class="col-md-8">
