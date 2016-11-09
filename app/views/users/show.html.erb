@@ -5,6 +5,51 @@
                 <%= gravatar_for @user %>
                 <%= @user.name %>
             </h1>
+            <%= @user.name %>'s profile
+            <% if !!current_user && current_user.id == @user.id %>
+                (
+                <%= link_to 'Edit', edit_user_path(@user) %>
+                )
+            <% end %>
+            <div class="row">
+                <div class="col-md-4">
+                    <%= fa_icon "envelope" %>
+                    email
+                </div>
+                <div class="col-md-8">
+                    <%= @user.email %>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <%= fa_icon "user" %>
+                    profile
+                </div>
+                <div class="col-md-8">
+                    <%= @user.profile %>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <%= fa_icon "map-marker" %>
+                    location
+                </div>
+                <div class="col-md-8">
+                    <%= @user.location %>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <%= fa_icon "link" %>
+                    url
+                </div>
+                <div class="col-md-8">
+                    <%= @user.url %>
+                </div>
+            </div>
         </section>
     </aside>
     <div class="col-md-8">

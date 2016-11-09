@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sentitive: false }
   
+  validates :url,
+    length: { maximum: 255 },
+    format: { with: URI.regexp },
+    if: 'url.present?'
+    
+  validates :profile, :location,
+    length: { maximum: 255 }
+  
   has_secure_password
   
   has_many :microposts
