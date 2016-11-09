@@ -5,6 +5,8 @@
                 <%= gravatar_for @user %>
                 <%= @user.name %>
             </h1>
+        </section>
+        <section class="user_profile">
             <%= @user.name %>'s profile
             <% if !!current_user && current_user.id == @user.id %>
                 (
