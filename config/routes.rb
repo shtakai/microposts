@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   delete 'logout',    to: 'sessions#destroy'
   
   resources :users
+  get 'users/:id/followings', to: 'users#followings'
+  get 'users/:id/followers',  to: 'users#followers'
+  
   resources :microposts
   resources :relationships, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
