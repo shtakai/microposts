@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
     uniqueness: { case_sentitive: false }
   
   has_secure_password
+  
+  has_many :microposts
+  
 end
