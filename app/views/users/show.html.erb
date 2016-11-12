@@ -56,13 +56,13 @@
         <section class="follow_users">
             <p>
                 Following
-                <%= link_to "#{@following_number} users", followings_path(current_user) %>
+                <%= link_to "#{@following_number} users", followings_path(@user) %>
             </p>
         </section>
         <section class="follow_users">
             <p>
                 Follower
-                <%= link_to "#{@followers_number} users", followers_path(current_user) %>
+                <%= link_to "#{@followers_number} users", followers_path(@user) %>
             </p>
         </section>
     </aside>
