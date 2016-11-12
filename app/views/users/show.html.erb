@@ -53,6 +53,18 @@
                 </div>
             </div>
         </section>
+        <section class="follow_users">
+            <h3>Following</h3>
+            <ul>
+                <%= render @following_users %>
+            </ul>
+        </section>
+        <section class="follow_users">
+            <h3>Follower</h3>
+            <ul>
+                <%= render @followers_users %>
+            </ul>
+        </section>
     </aside>
     <div class="col-md-8">
         <%= render 'follow_form' if logged_in? %>
