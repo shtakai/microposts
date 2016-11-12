@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   
   
   # follower: users who follows this user
-  has_many :follower_relationship,   class_name: "Relationship",
+  has_many :follower_relationships,   class_name: "Relationship",
                                      foreign_key: "followed_id",
                                      dependent: :destroy
   has_many :follower_users, through: :follower_relationships, source: :follower 
