@@ -9,13 +9,16 @@ class MicropostsController < ApplicationController
     else
       @feed_items = current_user.feed_items.
                                 includes(:user).
-                                order(created_at: :desc)
+                                order(created_at: :desc).
+                                page params[:id]
       render 'static_pages/home'
     end
   end
   
   def destroy
-    @micropost = current_user.microposts.find_by(id: params[:id])
+    @micropost = current_user.microposts.
+                              find_by(id: params[:id]).
+                              page params[:id]
     logger.debug @micropost
     return redirect_to root_url if @micropost.nil?
     @micropost.destroy
