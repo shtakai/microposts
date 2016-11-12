@@ -25,6 +25,17 @@ class MicropostsController < ApplicationController
   end
   
   def repost
+    # TODO: refer original post id
+    if !!repostable_micropost
+      micropost = Micropost.create(
+        user: current_user,
+        content: repostable_micropost.content
+      )
+      flash[:success] = "Reposted."
+    else
+      flash[:danger] = "Can't Repost"
+    end
+    redirect_to root_path
   end
   
   private
@@ -33,4 +44,8 @@ class MicropostsController < ApplicationController
     params.require(:micropost).permit(:content)
   end
       
+  def repostable_micropost
+    micropost = Micropost.find_by(id: params[:id])
+    !!micropost && micropost.user_id == current_user.id ? nil : micropost
+  end
 end
