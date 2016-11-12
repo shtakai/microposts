@@ -73,7 +73,7 @@ class UsersController < ApplicationController
   end
   
   def get_user_by_id
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
   end
   
   def following_users(all: nil)
