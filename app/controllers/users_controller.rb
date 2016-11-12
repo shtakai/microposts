@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.
                         order(created_at: :desc).
                         page params[:page]
-    @microposts = @user.microposts.order(created_at: :desc)
     @following_number = following_users.size
     @followers_number = followers_users.size
   end
