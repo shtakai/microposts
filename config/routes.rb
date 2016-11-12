@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete 'logout',    to: 'sessions#destroy'
   get 'users/:id/followings', to: 'users#followings', as: 'followings'
   get 'users/:id/followers',  to: 'users#followers',  as: 'followers'
+  post 'microposts/:id/repost', to: 'microposts#repost', as: 'repost'
   
   resources :users
   
