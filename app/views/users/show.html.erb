@@ -73,7 +73,7 @@
             <ol class="microposts">
                 <%= render @microposts %>
             </ol>
-            <%= paginate @microposts %>
+            <%= paginate @microposts, params: {controller: 'users', action: 'show', _: nil, _method: nil, authenticity_token: nil, utf8: nil} %>
         <% end %>
     </div>
 </div>
