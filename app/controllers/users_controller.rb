@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   def followers
     @follow_users = @user.follower_users
     @follow_title = "Users who follow you."
+    render 'followings'
   end
   
   private
