@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
+  before_action :get_user_by_id, only: [:show, :followings, :followers]
   
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.
                         order(created_at: :desc).
                         page params[:page]
+    @microposts = @user.microposts.order(created_at: :desc)
+    @following_number = following_users.size
+    @followers_number = followers_users.size
   end
   
   def new
@@ -37,8 +41,17 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-    
-    
+  end
+  
+  def followings
+    @follow_users = following_users
+    @follow_title = "Users whom you follow."
+  end
+  
+  def followers
+    @follow_users = followers_users
+    @follow_title = "Users who follow you."
+    render 'followings'
   end
   
   private
@@ -58,6 +71,18 @@ class UsersController < ApplicationController
   
   def is_current_user?
     get_current_user.id == params[:id].to_i
+  end
+  
+  def get_user_by_id
+    @user = User.find_by(id: params[:id])
+  end
+  
+  def following_users
+    @user.following_users
+  end
+  
+  def followers_users
+    @user.follower_users
   end
   
 end
