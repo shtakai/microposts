@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :microposts
-  has_many :favorites, dependent: :destroy
+  has_many :favolites, dependent: :destroy
   
   # followee: users who this user follows
   has_many :following_relationships, class_name: "Relationship",

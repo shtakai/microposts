@@ -17,11 +17,17 @@ class MicropostsController < ApplicationController
   
   def destroy
     @micropost = current_user.microposts.
-                              find_by(id: params[:id])
-    return redirect_to root_url if @micropost.nil?
+                              find(params[:id])
+    #必ず@micropostがあるので↓は不要
+    # NOTE: 不正な操作はcatchする
+    # return redirect_to root_url if @micropost.nil?
     @micropost.destroy
     flash[:success] = "Micropost deleted"
-    redirect_to request.referrer || root_url
+    
+    # NOTE: always success deletion -> only root_url
+    # TODO: check source code that is generated from 'rails g scaffold ....'
+    # redirect_to request.referrer || root_url
+    redirect_to root_url
   end
   
   def repost
