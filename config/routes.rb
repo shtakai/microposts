@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'users/:id/followings', to: 'users#followings', as: 'followings'
   get 'users/:id/followers',  to: 'users#followers',  as: 'followers'
   post 'microposts/:id/repost', to: 'microposts#repost', as: 'repost'
+  post 'microposts/:id/favolite', to: 'microposts#favolite', as: 'favolite'
+  # TODO: show favolites
   
   resources :users
   
