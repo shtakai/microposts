@@ -6,8 +6,8 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.
                         order(created_at: :desc).
                         page params[:page]
-    @following_number = following_users.size
-    @followers_number = followers_users.size
+    @following_number = following_users(all: true).size
+    @followers_number = followers_users(all: true).size
   end
   
   def new
@@ -76,12 +76,12 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
   
-  def following_users
-    @user.following_users
+  def following_users(all: nil)
+    !!all ? @user.following_users : @user.following_users.page(params[:page])
   end
   
-  def followers_users
-    @user.follower_users
+  def followers_users(all: nil)
+    !!all ? @user.follower_users : @user.follower_users.page(params[:page])
   end
   
 end

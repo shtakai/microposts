@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  paginates_per 3
+  
   before_save { self.email = self.email.downcase } 
   
   validates :name, 
