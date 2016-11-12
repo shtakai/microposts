@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   
   def show
     @microposts = @user.microposts.order(created_at: :desc)
-    @following_users = following_users
-    @followers_users = followers_users
+    @following_number = following_users.size
+    @followers_number = followers_users.size
   end
   
   def new
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
   
   def followers
-    @follow_users = follower_users
+    @follow_users = followers_users
     @follow_title = "Users who follow you."
     render 'followings'
   end

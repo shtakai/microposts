@@ -53,6 +53,18 @@
                 </div>
             </div>
         </section>
+        <section class="follow_users">
+            <p>
+                Following
+                <%= link_to "#{@following_number} users", followings_path(current_user) %>
+            </p>
+        </section>
+        <section class="follow_users">
+            <p>
+                Follower
+                <%= link_to "#{@followers_number} users", followers_path(current_user) %>
+            </p>
+        </section>
     </aside>
     <div class="col-md-8">
         <%= render 'follow_form' if logged_in? %>

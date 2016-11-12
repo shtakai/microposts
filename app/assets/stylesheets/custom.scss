@@ -120,6 +120,11 @@ aside {
     section.user_profile {
         overflow: auto;
     }
+    section.follow_users {
+        p {
+            font-size: 1.3em;
+        }
+    }
     section {
         padding: 10px 0;
         margin-top: 20px;
@@ -198,4 +203,10 @@ aside {
         padding: 10px 0;
         border-top: 1px solid #ke8e8e8;
     }
+}
+
+
+// following numbers on users#show
+section .follow_users {
+   style: inline; 
 }
