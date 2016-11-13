@@ -11,7 +11,7 @@ class MicropostsController < ApplicationController
                                 includes(:user).
                                 order(created_at: :desc).
                                 page params[:page]
-      render 'static_pages/home'
+      redirect_to root_path, flash: { danger: "post creation error" }
     end
   end
   
